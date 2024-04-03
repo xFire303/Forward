@@ -16,27 +16,12 @@
 <body>
     <div id="map"></div>
 
-    <div class="card-container">
-        <div class="card">
-            <div class="side">
-                <div class="field">
-                    <label for="nome">Nome:</label>
-                    <div id="nome"> Mario</div>
-                </div>
-                <div class="field">
-                    <label for="cognome">Cognome:</label>
-                    <div id="cognome">Rossi</div>
-                </div>
-                <div class="field">
-                    <label for="numero-tessera">Numero Tessera:</label>
-                    <div id="numero-tessera">123456</div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="contenitore-tessera" id="contenitore-tessera"></div>
 
-    <div id="contenitore-tessere"></div>
-    <div id="contenitore-tessereCasonetto"></div>
+    <div id="contenitore-tessereCasonetto1" class="tessere-cassonetto"></div>
+    <div id="contenitore-tessereCasonetto2" class="tessere-cassonetto"></div>
+    <div id="contenitore-tessereCasonetto3" class="tessere-cassonetto"></div>
+    <div id="contenitore-tessereCasonetto4" class="tessere-cassonetto"></div>
 
     <h1>Invio Email</h1>
     <form action="/send_email" method="post">
@@ -46,7 +31,6 @@
     <script src="../scripts/autoHeight.js"></script>
     <script src="https://kit.fontawesome.com/b7a588a6d3.js" crossorigin="anonymous"></script>
     <script src="../scripts/initializeMap.js"></script>
-    <script src="../scripts/getPosition.js"></script>
     <!-- <script src="../scripts/coordinatePopup.js"></script> -->
     <script src="../scripts/icons.js"></script>
     <script src="../scripts/markers.js"></script>

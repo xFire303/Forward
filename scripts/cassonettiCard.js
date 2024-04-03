@@ -1,70 +1,57 @@
-function createCassonettiCard(icona) {
-    // Creazione del nuovo elemento div con classe tessera
-    var tessera = document.createElement('div');
-    tessera.className = 'tessera';
+map.locate({ setView: true, maxZoom: 16 });
+let distance;
 
-    // Creazione degli elementi h2 con i rispettivi testi vuoti
-    var h2Nome = document.createElement('h2');
-    var h2Cognome = document.createElement('h2');
-    var h2NumeroTessera = document.createElement('h2');
-
-    // Impostazione dell'icona corrente
-    let urlIcona = icona.options.iconUrl;
-
-    // Impostazione del nome sulla base dell'icona corrente
-    if (urlIcona === plasticaIcon.options.iconUrl) {
-        h2Nome.textContent = cassoPlastica;
-    } else if (urlIcona === cartaIcon.options.iconUrl) {
-        h2Nome.textContent = cassoCarta;
-    } else if (urlIcona === vetroIcon.options.iconUrl) {
-        h2Nome.textContent = cassoVetro;
-    } else if (urlIcona === lattineIcon.options.iconUrl) {
-        h2Nome.textContent = cassoLattine;
-    } else {
-        h2Nome.textContent = "Tipo di cassonetto non riconosciuto";
-    }
-
-    h2Cognome.textContent = 'Stato: ' + elementoCasuale;
-
-    // Viene ascoltato l'evento : "distanceCalculated"
-    // e la distanza viene recuperata dall'evento per essere utilizzata
-    document.addEventListener('distanceCalculated', function (event) {
-        var distance = event.detail;
-        if (distance !== undefined) {
-            h2NumeroTessera.textContent = 'Distanza: ' + distance.toFixed(0) + 'm';
-        } else {
-            h2NumeroTessera.textContent = 'Distanza: Informazione non disponibile';
-        }
-    });
-
-    // Aggiunta degli elementi h2 al div tessera
-    tessera.appendChild(h2Nome);
-    tessera.appendChild(h2Cognome);
-    tessera.appendChild(h2NumeroTessera);
-
-    // Restituire il div tessera
-    return tessera;
+function onLocationError(e) {
+    alert(e.message);
 }
 
-// Funzione per aggiungere una nuova tessera al contenitore delle tessere
-function aggiungiTesseraAlContenitore(tessera) {
-    // Ottieni il riferimento al contenitore delle tessere
-    var contenitoreTessere = document.getElementById('contenitore-tessereCasonetto');
+map.on('locationfound', onLocationFound);
+map.on('locationerror', onLocationError);
 
-    // Aggiungi la tessera al contenitore
-    contenitoreTessere.appendChild(tessera);
+// Funzione per generare lo stato casuale delle tessere
+function generateRandomState() {
+    const states = ["Pieno", "Vuoto", "75%", "50%"];
+    return states[Math.floor(Math.random() * states.length)];
 }
 
-// Creazione delle tessere e aggiunta al contenitore
-let icona1 = casso1.getIcon();
-let icona2 = casso2.getIcon();
-let icona3 = casso3.getIcon();
-let icona4 = casso4.getIcon();
+// Funzione per calcolare la distanza tra due coordinate geografiche
+function calculateDistance(latlng1, latlng2) {
+    return Math.round(latlng1.distanceTo(latlng2));
+}
 
-let iconslist = [icona1, icona2, icona3, icona4];
+// Funzione per creare una tessera con le informazioni fornite
+function createCard(containerId, name, state, distance) {
+    const container = document.getElementById(containerId);
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.innerHTML = `
+        <h3>${name}</h3>
+        <p>Stato: ${state}</p>
+        <p>Distanza: ${distance} metri</p>
+    `;
+    container.appendChild(card);
+}
 
-for (let i = 0; i < iconslist.length; i++) {
-    let icona = iconslist[i];
-    let tessera = createCassonettiCard(icona);
-    aggiungiTesseraAlContenitore(tessera);
+function onLocationFound(e) {
+    let radius = e.accuracy;
+
+    L.marker(e.latlng).addTo(map)
+        .bindPopup("Ti trovi entro " + radius + " metri da questo punto").openPopup();
+
+    L.circle(e.latlng, radius).addTo(map);
+
+    let latLng1 = casso1.getLatLng();
+    let latLng2 = casso2.getLatLng();
+    let latLng3 = casso3.getLatLng();
+    let latLng4 = casso4.getLatLng();
+
+    let distance1 = calculateDistance(e.latlng, latLng1);
+    let distance2 = calculateDistance(e.latlng, latLng2);
+    let distance3 = calculateDistance(e.latlng, latLng3);
+    let distance4 = calculateDistance(e.latlng, latLng4);
+
+    createCard('contenitore-tessereCasonetto1', cassoPlastica, generateRandomState(), distance1);
+    createCard('contenitore-tessereCasonetto2', cassoCarta, generateRandomState(), distance2);
+    createCard('contenitore-tessereCasonetto3', cassoVetro, generateRandomState(), distance3);
+    createCard('contenitore-tessereCasonetto4', cassoLattine, generateRandomState(), distance4);
 }

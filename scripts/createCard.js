@@ -1,36 +1,46 @@
-function createCard(nome, cognome, numeroTessera) {
-    // Creazione del nuovo elemento div con classe tessera
-    var tessera = document.createElement('div');
-    tessera.className = 'tessera';
+// Seleziona il contenitore dove aggiungere le tessere
+let contenitore = document.getElementById("contenitore-tessera");
 
-    // Creazione degli elementi h1 e h2 con i rispettivi testi vuoti
-    var h2Nome = document.createElement('h2');
-    var h2Cognome = document.createElement('h2');
-    var h2NumeroTessera = document.createElement('h2');
+// Crea un nuovo elemento div per la tessera
+let tesseraDiv = document.createElement("div");
+tesseraDiv.classList.add("card-container");
 
-    // Inserimento del testo nei tag h2
-    h2Nome.textContent = 'Nome: ' + nome;
-    h2Cognome.textContent = 'Cognome: ' + cognome;
-    h2NumeroTessera.textContent = 'N° tessera: ' + numeroTessera;
+// Crea un nuovo elemento div per la tessera interna
+let cardDiv = document.createElement("div");
+cardDiv.classList.add("card");
 
-    // Aggiunta degli elementi h2 al div tessera
-    tessera.appendChild(h2Nome);
-    tessera.appendChild(h2Cognome);
-    tessera.appendChild(h2NumeroTessera);
+// Crea un nuovo elemento div per il lato della tessera
+let sideDiv = document.createElement("div");
+sideDiv.classList.add("side");
 
-    // Restituire il div tessera
-    return tessera;
-}
+// Crea e aggiungi gli elementi per i campi della tessera
+let campi = [
+  { label: "Nome:", value: "Mario" },
+  { label: "Cognome:", value: "Rossi" },
+  { label: "Numero Tessera:", value: "9238 3309" }
+];
 
-// Funzione per aggiungere una nuova tessera al contenitore delle tessere
-function aggiungiTesseraAlContenitore(tessera) {
-    // Ottieni il riferimento al contenitore delle tessere
-    var contenitoreTessere = document.getElementById('contenitore-tessere');
+campi.forEach(function(campo) {
+  let fieldDiv = document.createElement("div");
+  fieldDiv.classList.add("field");
 
-    // Aggiungi la tessera al contenitore
-    contenitoreTessere.appendChild(tessera);
-}
+  let label = document.createElement("label");
+  label.setAttribute("for", campo.label.toLowerCase().replace(":", ""));
+  label.textContent = campo.label;
 
-// Esempio di utilizzo
-var nuovaTessera = createCard('Mario', 'Rossi', '9238 3309');
-aggiungiTesseraAlContenitore(nuovaTessera);
+  let valueDiv = document.createElement("div");
+  valueDiv.id = campo.label.toLowerCase().replace(":", "");
+  valueDiv.textContent = campo.value;
+
+  fieldDiv.appendChild(label);
+  fieldDiv.appendChild(valueDiv);
+
+  sideDiv.appendChild(fieldDiv);
+});
+
+// Aggiungi il lato della tessera al div della tessera
+cardDiv.appendChild(sideDiv);
+
+// Aggiungi la tessera al contenitore
+tesseraDiv.appendChild(cardDiv);
+contenitore.appendChild(tesseraDiv);
