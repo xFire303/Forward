@@ -3,21 +3,56 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>HomePage</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 
 <body>
-    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1AI_3099KnA2vPIHJ9GgyuF_XuWo60q8&ehbc=2E312F" width="640"
-        height="480"></iframe>
+    <div id="map"></div>
+
+    <div class="card-container">
+        <div class="card">
+            <div class="side">
+                <div class="field">
+                    <label for="nome">Nome:</label>
+                    <div id="nome"> Mario</div>
+                </div>
+                <div class="field">
+                    <label for="cognome">Cognome:</label>
+                    <div id="cognome">Rossi</div>
+                </div>
+                <div class="field">
+                    <label for="numero-tessera">Numero Tessera:</label>
+                    <div id="numero-tessera">123456</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contenitore-tessere"></div>
+    <div id="contenitore-tessereCasonetto"></div>
 
     <h1>Invio Email</h1>
     <form action="/send_email" method="post">
         <button type="submit">Invia Email</button>
     </form>
 
-    <script src="./scripts/itToEng.js"></script>
-
+    <script src="../scripts/autoHeight.js"></script>
+    <script src="https://kit.fontawesome.com/b7a588a6d3.js" crossorigin="anonymous"></script>
+    <script src="../scripts/initializeMap.js"></script>
+    <script src="../scripts/getPosition.js"></script>
+    <!-- <script src="../scripts/coordinatePopup.js"></script> -->
+    <script src="../scripts/icons.js"></script>
+    <script src="../scripts/markers.js"></script>
+    <script src="../scripts/showTessera.js"></script>
+    <script src="../scripts/createCard.js"></script>
+    <script src="../scripts/cassonettiCard.js"></script>
 </body>
 
 </html>
