@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const tessere = document.getElementById("contenitore-tessere");
+    const tessere = document.getElementById("contenitore-tessera");
 
     function checkFullScreen() {
         if (window.innerWidth === screen.width) {

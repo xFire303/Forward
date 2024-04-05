@@ -13,18 +13,22 @@ body {
     line-height: 10px;
 }
 
-#contenitore-tessere {
+#contenitore-tessera {
     display: none;
 }
 
-#contenitore-tessereCasonetto {
+#contenitore-tessereCasonetto1, #contenitore-tessereCasonetto2, #contenitore-tessereCasonetto3, #contenitore-tessereCasonetto4 {
+    border: 1px solid #ccc;
     display: none;
+    max-width: 400px;
+    /* Larghezza massima della tessera */
+    margin-left: 8%;
 }
 
 .card-container {
     max-width: 400px;
     /* Larghezza massima della tessera */
-    perspective: 1000px;
+    margin-left: 8%;
 }
 
 .card {
