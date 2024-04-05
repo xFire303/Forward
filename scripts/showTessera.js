@@ -1,21 +1,24 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const tessere = document.getElementById("contenitore-tessera");
+const tessere = document.getElementById("contenitore-tessera");
+const cartaicon = document.getElementById("cartaicon");
 
-    function checkFullScreen() {
-        if (window.innerWidth === screen.width) {
-            for (let i = 0; i < tessere.length; i++) {
-                tessere[i].style.display = "flex";
-            }
-        } else {
-            for (let i = 0; i < tessere.length; i++) {
-                tessere[i].style.display = "none";
-            }
-        }
+function showTessera() {
+    if (tessere.style.display === "none" || tessere.style.display === "") {
+        tessere.style.transition = "all 0.3s ease-in-out";
+        tessere.style.display = "flex";
+        tessere.style.transition = "transform 0.3s ease-in-out";
+        tessere.style.transform = "translateY(100%)";
+        setTimeout(() => {
+            tessere.style.transform = "translateY(0)";
+        }, 10);
+        mappa.style.height = `${altezzaDispositivo - 163}px`;
+    } else {
+        tessere.style.transform = "translateY(100%)";
+        setTimeout(() => {
+            tessere.style.display = "none";
+        }, 300);
+        mappa.style.height = `${altezzaDispositivo}px`;
     }
+}
 
-    // Esegui la funzione inizialmente al caricamento della pagina
-    checkFullScreen();
-
-    // Aggiungi un listener per l'evento di ridimensionamento della finestra
-    window.addEventListener("resize", checkFullScreen);
-});
+// Aggiungi un listener per l'evento click sulla carta
+cartaicon.addEventListener("click", showTessera);

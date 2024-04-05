@@ -1,7 +1,8 @@
 @import url(navbar.css);
 
 body {
-    margin: 0 auto;
+    padding: 0;
+    margin: 0;
 }
 
 .tessera {
@@ -66,4 +67,12 @@ body {
 .field label {
     font-weight: bold;
     margin-right: 10px; /* Aggiunge spazio a destra del label */
+}
+
+#cartaicon {
+    position: absolute;
+    bottom: 25px;
+    right: 10px;
+    z-index: 1002;
+    font-size: 4vh;
 }
