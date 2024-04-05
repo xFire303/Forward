@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function checkFullScreen() {
         if (window.innerWidth === screen.width) {
             for (let i = 0; i < tessere.length; i++) {
-                tessere[i].style.display = "block";
+                tessere[i].style.display = "flex";
             }
         } else {
             for (let i = 0; i < tessere.length; i++) {

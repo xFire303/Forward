@@ -13,6 +13,7 @@ body {
 
 #contenitore-tessera {
     display: none;
+    flex-direction: column;
 }
 
 #contenitore-tessereCasonetto1, #contenitore-tessereCasonetto2, #contenitore-tessereCasonetto3, #contenitore-tessereCasonetto4 {
