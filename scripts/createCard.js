@@ -26,11 +26,11 @@ function makeRequest(url, method, data, callback) {
 }
 
 // Fai una richiesta al server PHP per ottenere i dati dalla tabella del database
-makeRequest('../php/get_data.php', 'GET', null, function(response) {
+makeRequest('../php/get_data.php', 'GET', null, function (response) {
   let data = JSON.parse(response);
 
   // Itera sui dati e crea tessere per ciascun record
-  data.forEach(function(record) {
+  data.forEach(function (record) {
     // Crea un nuovo elemento div per la tessera
     let tesseraDiv = document.createElement("div");
     tesseraDiv.classList.add("card-container");
@@ -39,29 +39,32 @@ makeRequest('../php/get_data.php', 'GET', null, function(response) {
     let cardDiv = document.createElement("div");
     cardDiv.classList.add("card");
 
-    // Crea un nuovo elemento div per il lato della tessera
-    let sideDiv = document.createElement("div");
-    sideDiv.classList.add("side");
+    // Crea un nuovo elemento div per il container delle informazioni
+    let containerInfoDiv = document.createElement("div");
+    containerInfoDiv.classList.add("containerInfo");
 
-    // Crea e aggiungi gli elementi per i campi della tessera
-    Object.keys(record).forEach(function(key) {
-      let fieldDiv = document.createElement("div");
-      fieldDiv.classList.add("field");
+    // Aggiungi l'icona
+    let icon = document.createElement("i");
+    icon.classList.add("fa-solid", "fa-wifi", "wifiIcon");
 
-      let label = document.createElement("label");
-      label.textContent = campiMapping[key] || key + ":"; // Usa il mapping dei nomi dei campi se disponibile, altrimenti usa il nome del campo originale
+    // Aggiungi gli elementi per i campi della tessera
+    let nameSurname = document.createElement("h2");
+    nameSurname.textContent = record.nome + " " + record.cognome;
+    containerInfoDiv.appendChild(nameSurname);
 
-      let valueDiv = document.createElement("div");
-      valueDiv.textContent = record[key];
+    let campoTessera = document.createElement("h2");
+    campoTessera.textContent = "N°tessera";
+    containerInfoDiv.appendChild(campoTessera);
 
-      fieldDiv.appendChild(label);
-      fieldDiv.appendChild(valueDiv);
+    let tesseraNum = document.createElement("h2");
+    tesseraNum.textContent = record.nTessera;
+    containerInfoDiv.appendChild(tesseraNum);
 
-      sideDiv.appendChild(fieldDiv);
-    });
+    // Aggiungi l'icona al container delle informazioni
+    containerInfoDiv.appendChild(icon);
 
-    // Aggiungi il lato della tessera al div della tessera
-    cardDiv.appendChild(sideDiv);
+    // Aggiungi il container delle informazioni alla tessera
+    cardDiv.appendChild(containerInfoDiv);
 
     // Aggiungi la tessera al contenitore
     tesseraDiv.appendChild(cardDiv);
