@@ -88,6 +88,7 @@ button:hover {
 }
 #chk:checked ~ .login label {
     transform: scale(1);
+    padding-top: 30px;
 }
 #chk:checked ~ .Registrazione label {
     transform: scale(.6);}

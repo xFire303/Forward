@@ -37,6 +37,7 @@ nav{
     height: 3px;
     background-color: black;
     margin: 3px 0;
+    transition: transform 0.3s ease;
     transform: rotate(0deg);
 }
 
@@ -56,13 +57,21 @@ nav{
     padding-top: 10rem;
 }
 
+#hamburger:nth-child(1){
+    top: 0;
+}
+#hamburger:nth-child(2){
+    top: 8px;
+}
+#hamburger:nth-child(3){
+    top: 19.5px;
+}
+
 #hamburger.open span:nth-child(1){
-    transform: rotate(135deg);
+    transform: translateY(8px) rotate(45deg);
 }
 #hamburger.open span:nth-child(2){
     opacity: 0;
-    left: -60px;
 }
 #hamburger.open span:nth-child(3){
-    transform: rotate(-135deg);
-}
+    transform: translateY(-4.5px) rotate(-45deg);
