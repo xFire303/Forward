@@ -13,5 +13,6 @@ hamburger.classList.toggle('open');
 linkNav.forEach((link)=>{
     link.addEventListener("click",()=>{
         containerNav.classList.toggle("showMenu");
+        hamburger.classList.toggle('open');
     })
 })
