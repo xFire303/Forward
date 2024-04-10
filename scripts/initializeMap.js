@@ -1,4 +1,4 @@
-let map = L.map('map').fitWorld();
+let map = L.map('map').setView([41.8719, 12.5674], 6);
 let currentLayer = null; // Memorizza il layer corrente
 
 const lineHamburger = document.querySelectorAll('.line');
