@@ -5,7 +5,10 @@ const hamburger = document.getElementById('hamburger');
 
 //show menu
 hamburger.addEventListener('click',()=>{
+
     containerNav.classList.toggle('showMenu');
+    hamburger.classList.toggle('open');
+
 })
 //chiude il menu ogni volta che clicco un link
 linkNav.forEach((link)=>{
