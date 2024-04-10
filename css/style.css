@@ -9,7 +9,7 @@ body {
 }
 
 #contenitore-tessera {
-    background-color: #69966d;
+    background-color: #409e4d;
     display: none;
     z-index: 1002;
     padding: 30px 0px 30px 0px;
@@ -78,7 +78,7 @@ body {
     transition: 0.3s;
     width: 50%;
     border-radius: 10px;
-    background: linear-gradient(to right, #6f9b73, #aef6c5);
+    background: linear-gradient(to right, #2f774c, #a6f582);
     z-index: 1001;
     /* Assicura che la card sia sopra la mappa */
     padding: 25px 25px 25px 25px;
