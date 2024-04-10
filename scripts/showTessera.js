@@ -1,21 +1,28 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const tessere = document.getElementById("contenitore-tessera");
+const tessere = document.getElementById("contenitore-tessera");
+const cartaicon = document.getElementById("cartaIcon");
 
-    function checkFullScreen() {
-        if (window.innerWidth === screen.width) {
-            for (let i = 0; i < tessere.length; i++) {
-                tessere[i].style.display = "block";
-            }
-        } else {
-            for (let i = 0; i < tessere.length; i++) {
-                tessere[i].style.display = "none";
-            }
-        }
+const percentuale = 0.8;
+
+function showTessera() {
+    if (tessere.style.display === "none" || tessere.style.display === "") {
+        tessere.style.transition = "all 0.3s ease-in-out";
+        tessere.style.display = "flex";
+        tessere.style.transition = "transform 0.3s ease-in-out";
+        tessere.style.bottom = "0px";
+        tessere.style.transform = "translateY(100%)";
+        cartaicon.style.bottom = `${(altezzaDispositivo / 10) * 2.3}px`;
+        cards.style.display = "none";
+        setTimeout(() => {
+            tessere.style.transform = "translateY(0)";
+        }, 10);
+    } else {
+        tessere.style.transform = "translateY(100%)";
+        setTimeout(() => {
+            tessere.style.display = "none";
+        }, 300);
+        cartaicon.style.bottom = "25px";
     }
+}
 
-    // Esegui la funzione inizialmente al caricamento della pagina
-    checkFullScreen();
-
-    // Aggiungi un listener per l'evento di ridimensionamento della finestra
-    window.addEventListener("resize", checkFullScreen);
-});
+// Aggiungi un listener per l'evento click sulla carta
+cartaicon.addEventListener("click", showTessera);

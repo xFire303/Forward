@@ -8,10 +8,7 @@ let cassoCarta = "Cassonetto carta";
 let cassoVetro = "Cassonetto vetro";
 let cassoLattine = "Cassonetto lattine";
 
-const cards1 = document.getElementById("contenitore-tessereCasonetto1");
-const cards2 = document.getElementById("contenitore-tessereCasonetto2");
-const cards3 = document.getElementById("contenitore-tessereCasonetto3");
-const cards4 = document.getElementById("contenitore-tessereCasonetto4");
+const cards = document.getElementById("contenitore-tessereCasonetto");
 
 const tesseraUtente = document.getElementById("contenitore-tessera");
 
@@ -20,38 +17,42 @@ casso2.bindPopup(`<b>${cassoCarta}</b>`);
 casso3.bindPopup(`<b>${cassoVetro}</b>`);
 casso4.bindPopup(`<b>${cassoLattine}</b>`);
 
-function onMarkerClick(cards, altezzaDispositivo) {
-    const allCards = document.querySelectorAll(".tessere-cassonetto");
+function onMarkerClick(containerId) {
+    const clickedCard = document.getElementById(containerId);
+
+    // Nascondi tutte le tessere tranne quella cliccata
+    const allCards = document.querySelectorAll('.card-container2');
     allCards.forEach(card => {
-        if (card !== cards && card.style.display !== "none") {
-            card.style.transform = "translateY(100%)";
-            setTimeout(() => {
-                card.style.display = "none";
-                tesseraUtente.style.display = "none";
-            }, 300);
+        if (card.id !== containerId) {
+            card.style.display = 'none';
         }
     });
 
-    if (cards.style.display === "none" || cards.style.display === "") {
-        cards.style.transition = "all 0.3s ease-in-out";
-        cards.style.display = "block";
-        cards.style.transition = "transform 0.3s ease-in-out";
-        cards.style.transform = "translateY(100%)";
+    // Mostra la tessera cliccata
+    if (clickedCard.style.display === "none" || clickedCard.style.display === "") {
+        cards.style.display = "flex";
+        clickedCard.style.transition = "all 0.3s ease-in-out";
+        clickedCard.style.display = "flex";
+        cards.style.bottom = "0px";
+        clickedCard.style.transition = "transform 0.3s ease-in-out";
+        clickedCard.style.transform = "translateY(100%)";
+        tessere.style.display = "none";
         setTimeout(() => {
-            cards.style.transform = "translateY(0)";
+            clickedCard.style.transform = "translateY(0)";
         }, 10);
-        mappa.style.height = `${altezzaDispositivo - 163}px`;
+        cartaicon.style.bottom = `${(altezzaDispositivo / 10) * 2.4}px`;
     } else {
-        cards.style.transform = "translateY(100%)";
+        clickedCard.style.transform = "translateY(100%)";
         setTimeout(() => {
-            cards.style.display = "none";
+            clickedCard.style.display = "none";
         }, 300);
-        mappa.style.height = `${altezzaDispositivo}px`;
+        cartaicon.style.bottom = "25px";
+        cards.style.display = "none";
     }
 }
 
+casso1.on('click', () => onMarkerClick('card-container-0'));
+casso2.on('click', () => onMarkerClick('card-container-1'));
+casso3.on('click', () => onMarkerClick('card-container-2'));
+casso4.on('click', () => onMarkerClick('card-container-3'));
 
-casso1.on('click', () => onMarkerClick(cards1, altezzaDispositivo));
-casso2.on('click', () => onMarkerClick(cards2, altezzaDispositivo));
-casso3.on('click', () => onMarkerClick(cards3, altezzaDispositivo));
-casso4.on('click', () => onMarkerClick(cards4, altezzaDispositivo));

@@ -1,46 +1,73 @@
 // Seleziona il contenitore dove aggiungere le tessere
 let contenitore = document.getElementById("contenitore-tessera");
 
-// Crea un nuovo elemento div per la tessera
-let tesseraDiv = document.createElement("div");
-tesseraDiv.classList.add("card-container");
+// Mappatura dei nomi dei campi della tessera
+let campiMapping = {
+  "nome": "Nome:",
+  "cognome": "Cognome:",
+  "nTessera": "Numero Tessera:"
+};
 
-// Crea un nuovo elemento div per la tessera interna
-let cardDiv = document.createElement("div");
-cardDiv.classList.add("card");
+// Funzione per fare una richiesta AJAX
+function makeRequest(url, method, data, callback) {
+  let xhr = new XMLHttpRequest();
+  xhr.open(method, url, true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        callback(xhr.responseText);
+      } else {
+        console.error('Si è verificato un errore durante la richiesta.');
+      }
+    }
+  };
+  xhr.send(data);
+}
 
-// Crea un nuovo elemento div per il lato della tessera
-let sideDiv = document.createElement("div");
-sideDiv.classList.add("side");
+// Fai una richiesta al server PHP per ottenere i dati dalla tabella del database
+makeRequest('../php/get_data.php', 'GET', null, function (response) {
+  let data = JSON.parse(response);
 
-// Crea e aggiungi gli elementi per i campi della tessera
-let campi = [
-  { label: "Nome:", value: "Mario" },
-  { label: "Cognome:", value: "Rossi" },
-  { label: "Numero Tessera:", value: "9238 3309" }
-];
+  // Itera sui dati e crea tessere per ciascun record
+  data.forEach(function (record) {
+    // Crea un nuovo elemento div per la tessera
+    let tesseraDiv = document.createElement("div");
+    tesseraDiv.classList.add("card-container");
 
-campi.forEach(function(campo) {
-  let fieldDiv = document.createElement("div");
-  fieldDiv.classList.add("field");
+    // Crea un nuovo elemento div per la tessera interna
+    let cardDiv = document.createElement("div");
+    cardDiv.classList.add("card");
 
-  let label = document.createElement("label");
-  label.setAttribute("for", campo.label.toLowerCase().replace(":", ""));
-  label.textContent = campo.label;
+    // Crea un nuovo elemento div per il container delle informazioni
+    let containerInfoDiv = document.createElement("div");
+    containerInfoDiv.classList.add("containerInfo");
 
-  let valueDiv = document.createElement("div");
-  valueDiv.id = campo.label.toLowerCase().replace(":", "");
-  valueDiv.textContent = campo.value;
+    // Aggiungi l'icona
+    let icon = document.createElement("i");
+    icon.classList.add("fa-solid", "fa-wifi", "wifiIcon");
 
-  fieldDiv.appendChild(label);
-  fieldDiv.appendChild(valueDiv);
+    // Aggiungi gli elementi per i campi della tessera
+    let nameSurname = document.createElement("h2");
+    nameSurname.textContent = record.nome + " " + record.cognome;
+    containerInfoDiv.appendChild(nameSurname);
 
-  sideDiv.appendChild(fieldDiv);
+    let campoTessera = document.createElement("h2");
+    campoTessera.textContent = "N°tessera";
+    containerInfoDiv.appendChild(campoTessera);
+
+    let tesseraNum = document.createElement("h2");
+    tesseraNum.textContent = record.nTessera;
+    containerInfoDiv.appendChild(tesseraNum);
+
+    // Aggiungi l'icona al container delle informazioni
+    containerInfoDiv.appendChild(icon);
+
+    // Aggiungi il container delle informazioni alla tessera
+    cardDiv.appendChild(containerInfoDiv);
+
+    // Aggiungi la tessera al contenitore
+    tesseraDiv.appendChild(cardDiv);
+    contenitore.appendChild(tesseraDiv);
+  });
 });
-
-// Aggiungi il lato della tessera al div della tessera
-cardDiv.appendChild(sideDiv);
-
-// Aggiungi la tessera al contenitore
-tesseraDiv.appendChild(cardDiv);
-contenitore.appendChild(tesseraDiv);

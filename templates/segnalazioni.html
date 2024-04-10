@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>segnalazioni</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="hamburger" id="hamburger">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </div>
+
+        <div class="linkContainer">
+            <ul class="navLinks">
+                <a href="index.html" class="link">
+                    <li>Mappa</li>
+                </a>
+                <a href="../pages/profilo.php" class="link">
+                    <li>Profilo personale</li>
+                </a>
+                <a href="../pages/scanRifiuti.php" class="link">
+                    <li>Scansiona rifiuto</li>
+                </a>
+                <a href="../pages/informazioni.html" class="link">
+                    <li>Informazioni</li>
+                </a>
+                <a href="segnalazioni.html" class="link">
+                    <li>Segnalazioni</li>
+                </a>
+            </ul>
+        </div>
+    </nav>
+
+    <h1>Invio Email</h1>
+    <form action="/send_email" method="post">
+        <button type="submit">Invia Email</button>
+    </form>
+    
+    <script src="../js/index.js"></script>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 # app.py
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import os
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -14,6 +14,10 @@ destinatari = {
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/segnalazioni')
+def altra_pagina():
+    return render_template('segnalazioni.html')
 
 @app.route('/send_email', methods=['POST'])
 def send_email():
@@ -47,7 +51,8 @@ def send_email():
 
     # Chiusura della connessione
     server.quit()
-    return 'Email inviata con successo!'
+    return redirect(url_for('segnalazioni'))  # Reindirizza alla funzione index
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
