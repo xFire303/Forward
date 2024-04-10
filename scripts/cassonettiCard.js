@@ -19,17 +19,42 @@ function calculateDistance(latlng1, latlng2) {
     return Math.round(latlng1.distanceTo(latlng2));
 }
 
-// Funzione per creare una tessera con le informazioni fornite
-function createCard(containerId, name, state, distance) {
+let cardContainerIdCounter = 0; // Variabile incrementale per gli ID
+
+function createCard(containerId, title, state, distance) {
     const container = document.getElementById(containerId);
+    const cardContainer = document.createElement('div');
+    const cardContainerId = `card-container-${cardContainerIdCounter++}`;
+    cardContainer.setAttribute('id', cardContainerId);
+    cardContainer.classList.add('card-container2');
+    cardContainer.style.display = 'none'; // Imposta display none per nascondere la card
+
     const card = document.createElement('div');
     card.classList.add('card');
-    card.innerHTML = `
-        <h3>${name}</h3>
-        <p>Stato: ${state}</p>
-        <p>Distanza: ${distance} metri</p>
-    `;
-    container.appendChild(card);
+
+    const containerInfo = document.createElement('div');
+    containerInfo.classList.add('containerInfo');
+
+    const titleElement = document.createElement('h2');
+    titleElement.textContent = title;
+
+    const stateElement = document.createElement('p');
+    stateElement.textContent = `Stato: ${state}`;
+
+    const distanceElement = document.createElement('p');
+    distanceElement.textContent = `Distanza: ${distance} metri`;
+
+    const segnala = document.createElement('a');
+    segnala.textContent = 'SEGNALA';
+    segnala.href = '../templates/segnalazioni.html';
+
+    containerInfo.appendChild(titleElement);
+    card.appendChild(containerInfo);
+    card.appendChild(stateElement);
+    card.appendChild(distanceElement);
+    card.appendChild(segnala);
+    cardContainer.appendChild(card);
+    container.appendChild(cardContainer);
 }
 
 function onLocationFound(e) {
@@ -50,8 +75,8 @@ function onLocationFound(e) {
     let distance3 = calculateDistance(e.latlng, latLng3);
     let distance4 = calculateDistance(e.latlng, latLng4);
 
-    createCard('contenitore-tessereCasonetto1', cassoPlastica, generateRandomState(), distance1);
-    createCard('contenitore-tessereCasonetto2', cassoCarta, generateRandomState(), distance2);
-    createCard('contenitore-tessereCasonetto3', cassoVetro, generateRandomState(), distance3);
-    createCard('contenitore-tessereCasonetto4', cassoLattine, generateRandomState(), distance4);
+    createCard('contenitore-tessereCasonetto', cassoPlastica, generateRandomState(), distance1);
+    createCard('contenitore-tessereCasonetto', cassoCarta, generateRandomState(), distance2);
+    createCard('contenitore-tessereCasonetto', cassoVetro, generateRandomState(), distance3);
+    createCard('contenitore-tessereCasonetto', cassoLattine, generateRandomState(), distance4);
 }
