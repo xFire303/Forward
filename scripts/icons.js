@@ -1,7 +1,7 @@
 let CassonettiIcons = L.Icon.extend({
     options: {
-        iconSize: [24, 15],
-        iconAnchor: [12, 15],
+        iconSize: [40, 25],
+        iconAnchor: [20, 25],
         popupAnchor: [0, -40]
     }
 });
