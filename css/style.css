@@ -4,6 +4,10 @@ body {
     margin: 0 auto;
 }
 
+.custom-popup {
+    font-size: 18px;
+}
+
 #contenitore-tessera {
     background-color: #69966d;
     display: none;
@@ -117,13 +121,13 @@ body {
         line-height: 1px;
         color: white;
     }
-    
+
     .containerInfo h2 {
         font-size: 20px !important;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         /* Cambia i valori per adattarli alle tue esigenze */
     }
-    
+
     .card p {
         font-size: 20px !important;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -134,4 +138,3 @@ body {
         line-height: 5px;
     }
 }
-

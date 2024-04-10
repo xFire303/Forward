@@ -12,10 +12,10 @@ const cards = document.getElementById("contenitore-tessereCasonetto");
 
 const tesseraUtente = document.getElementById("contenitore-tessera");
 
-casso1.bindPopup(`<b>${cassoPlastica}</b>`);
-casso2.bindPopup(`<b>${cassoCarta}</b>`);
-casso3.bindPopup(`<b>${cassoVetro}</b>`);
-casso4.bindPopup(`<b>${cassoLattine}</b>`);
+casso1.bindPopup(`<h1>${cassoPlastica}</h1>`);
+casso2.bindPopup(`<h1>${cassoCarta}</h1>`);
+casso3.bindPopup(`<h1>${cassoVetro}</h1>`);
+casso4.bindPopup(`<h1>${cassoLattine}</h1>`);
 
 function onMarkerClick(containerId) {
     const clickedCard = document.getElementById(containerId);
