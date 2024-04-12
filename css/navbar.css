@@ -7,6 +7,7 @@ nav{
     justify-content: end;
     height: 10vh;
 }
+
 .navLinks{
     display: flex;
     padding-left: 0;
@@ -24,6 +25,9 @@ nav{
     text-transform: uppercase;
 }
 
+.navLinks li {
+    font-size: 20px;
+}
 
 .hamburger{
     display: block;

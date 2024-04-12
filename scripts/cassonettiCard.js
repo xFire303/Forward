@@ -61,7 +61,7 @@ function onLocationFound(e) {
     let radius = e.accuracy;
 
     L.marker(e.latlng).addTo(map)
-        .bindPopup("Ti trovi entro " + radius + " metri da questo punto").openPopup();
+        .bindPopup("Ti trovi entro " + radius + " metri da questo punto", {className: 'custom-popup'}).openPopup();
 
     L.circle(e.latlng, radius).addTo(map);
 
