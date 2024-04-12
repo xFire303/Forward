@@ -1,59 +1,134 @@
-body {
-  background: #222;
+html, body {
+  background: #6b705c;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin: 0;
+}
+
+.form-container {
+  text-align: center;
+}
+
+.form {
+  max-width: 600px;
+  padding: 20px;
+  background: none;
+  border-radius: 8px;
+  position: relative; 
+  color: #fefae0;
+  font-size: 16pt;
+  transition: all 0.5s ease; 
+  opacity: 1; 
 }
 
 
-
-.form-container .belt {
-  transform: translateX(-33%);
+.form.hidden {
+  opacity: 0;
 }
 
-.form-container .belt.transitioned-2 {
-  transform: translateX(-66%);
-}
-
-.form-container .form .form-header {
-  width: 100%;
-  margin: 0 0 20px;
-  padding: 10px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-}
-
-.form-container .form .form-header h2 {
-  color: #1b4e00;
-}
-
-.form-container .form input,
-.form-container .form textarea {
-  display: block;
-  width: 95%;
-  max-width: 93%;
-  margin: 10px 0;
+.form input,
+.form textarea {
+  width: calc(100% - 20px);
+  margin-bottom: 10px;
   padding: 10px;
-  outline: none;
   border: none;
+  border-radius: 7px;
   border-bottom: 2px solid #1b4e00;
-  background: #333;
+  background: #fefae0;
   color: #1b4e00;
-  caret-color: #1b4e00;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease; 
+    opacity: 1; 
 }
 
-.form-container .form input::placeholder,
-.form-container .form textarea::placeholder {
+.form input::placeholder,
+.form textarea::placeholder {
   color: #1b4e00;
   transition: color .2s;
-  font-size: 14px;
 }
 
-.form-container .form input:focus::placeholder,
-.form-container .form textarea:focus::placeholder {
+.form input:focus::placeholder,
+.form textarea:focus::placeholder {
   color: transparent;
 }
+.form input:focus,
+.form textarea:focus
+{
+    border-color: #b7b7a4; 
+}
 
+
+.btn {
+  width: 150px;
+  height: 40px;
+  background: none;
+  border: #1b4e00 1px solid;
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  position: absolute;
+  bottom: -20px; 
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.btn:before {
+  content: "invia";
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 13px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+
+.btn:hover:before {
+  top: -30px;
+}
+
+.btn:after {
+  content: '\f1bb'; 
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-size: 25px;
+  color: #fff;
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+
+.btn:hover:after {
+  top: 50%;
+}
+
+@media screen and (max-width: 600px) {
+  .form {
+      padding: 10px;
+  }
+
+  .form input,
+  .form textarea {
+      font-size: 12px;
+  }
+
+  .btn {
+      width: 120px;
+      height: 30px;
+      font-size: 11px;
+  }
+
+  .btn:before {
+      font-size: 11px;
+  }
+
+  .btn:after {
+      font-size: 20px;
+  }
+}
