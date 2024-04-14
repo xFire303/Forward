@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', function() {
     let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
 

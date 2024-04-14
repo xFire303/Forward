@@ -1,4 +1,10 @@
 @import url(navbar.css);
+@import url(login.css);
+@import url(scanner.css);
+
+
+
+
 
 body {
     margin: 0 auto;
