@@ -1,13 +1,4 @@
 <?php
-// Avvia la sessione per accedere alla variabile $_SESSION
-session_start();
-
-// Verifica se l'utente è loggato
-if (!isset($_SESSION["email"])) {
-    // Utente non loggato, restituisci un messaggio di errore o reindirizza
-    die("Utente non autorizzato");
-}
-
 // Connessione al database MySQL
 $servername = "localhost";
 $username = "root";
@@ -21,11 +12,8 @@ if ($conn->connect_error) {
     die("Connessione fallita: " . $conn->connect_error);
 }
 
-// Ottieni l'email dell'utente dalla sessione
-$email = $_SESSION["email"];
-
-// Esegui query per ottenere i dati della tessera dell'utente loggato
-$sql = "SELECT utenti.nome, utenti.cognome, nTessera FROM tessere INNER JOIN utenti ON tessere.idUtente = utenti.idUtente WHERE utenti.email = '$email'";
+// Esegui query per ottenere i dati dalla tabella
+$sql = "SELECT nome, cognome, tessere.nTessera FROM utenti INNER JOIN tessere ON tessere.idTessera = utenti.idTessera";
 $result = $conn->query($sql);
 
 $data = array();
