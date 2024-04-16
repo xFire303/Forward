@@ -26,5 +26,6 @@
 
 </section>
 
+<script src="../js/scanner.js"></script>
 
 <?php include_once("../components/footer.php") ?>
