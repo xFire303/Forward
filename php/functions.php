@@ -36,7 +36,6 @@ function isSessionWithEmailActive() {
 
 // Funzione per reindirizzare l'utente alla pagina di accesso
 function redirectToLogin($path) {
-    // Reindirizza l'utente alla pagina login.php
     header("Location: $path");
-    exit; // Assicura che lo script si interrompa dopo il reindirizzamento
+    exit;
 }
