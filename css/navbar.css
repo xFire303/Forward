@@ -61,6 +61,10 @@ nav{
     padding-top: 10rem;
 }
 
+#btnLightMap, #btnDarkMap {
+    cursor: pointer;
+}
+
 #hamburger:nth-child(1){
     top: 0;
 }

@@ -1,40 +1,39 @@
 <?php
-session_start();
-
 include_once("../connection/dbConnection.php");
-include_once("/session.php");
-//prendiamo i dati inviati nel modulo
+include_once("session.php");
+
+$success = '';
+
+// Verifica se i dati sono stati inviati tramite metodo POST
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+    // Recupera i dati inviati dal modulo di registrazione
     $nome = $_POST["nome"];
     $cognome = $_POST["cognome"];
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    //verifico se e registrato come utente o meno
-   /*  if($_SESSION["ruolo"] == 'aziendale'){
-        $ruolo = "aziendale";
-    }else{
-        $ruolo = "cliente";
-    }
- */
-    //rendo sicura la password
+    // Rende sicura la password utilizzando la funzione password_hash()
     $password = password_hash($password, PASSWORD_DEFAULT);
 
-    //inserisco i dati
-    $sql = "INSERT INTO utenti (idUtente, nome, cognome, email, password) VALUES (NULL, '$nome', '$cognome', '$email', '$password');";
+    // Genera una data casuale e un numero di tessera casuale utilizzando le funzioni definite nel file 2
+    $dataCasuale = generateRandomDate();
+    $nTessera = generateRandomNumber();
 
-    if ($conn->query($sql) === TRUE) {
-        echo "Registrazione avvenuta con successo!";
-        header("Location:login.php");
+    // Inserisce i dati dell'utente nel database
+    $sqlUtente = "INSERT INTO utenti (nome, cognome, email, password, ruolo) VALUES ('$nome', '$cognome', '$email', '$password', 'user')";
+    $sqlTessera = "INSERT INTO tessere (dataScadenza, nTessera, idUtente) VALUES ('$dataCasuale', '$nTessera', LAST_INSERT_ID())";
+
+    // Esegue le query separatamente e verifica se hanno avuto successo
+    if ($conn->query($sqlUtente) === TRUE && $conn->query($sqlTessera) === TRUE) {
+        $success = "Registrazione avvenuta con successo!";
+        header("Location: ../templates/login.php?success=" . urlencode($success));
         exit();
     } else {
+        // Se c'è stato un errore durante l'inserimento dei dati nel database, mostra un messaggio di errore
         echo "Errore nella registrazione: " . $conn->error;
     }
 
-    $conn -> close();
-    
-    //reindirizzo alla login page
-    
+    // Chiude la connessione al database
+    $conn->close();
 }
-
 ?>

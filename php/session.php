@@ -2,6 +2,7 @@
 
 //inizio la sessione
 session_start();
+include 'functions.php';
 
 //verifico se è loggato o no
 $logged_in = $_SESSION['logged_in'] ?? false;
@@ -15,20 +16,4 @@ function require_login($logged_in){
         exit;
     }
 }
-
-
-function logout(){
-    $_SESSION = [];
-    
-    $params = session_get_cookie_params();
-    setcookie('PHPSESSID', '', time() - 3600, $params['path'],$params['domain'],
-    $params['secure'],$params['httponly']);
-    
-    session_destroy();
-    
-    header('Location: login.php');
-    exit;
-}
-
-
 ?>
