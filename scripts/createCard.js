@@ -1,73 +1,73 @@
-// Seleziona il contenitore dove aggiungere le tessere
-let contenitore = document.getElementById("contenitore-tessera");
+// // Seleziona il contenitore dove aggiungere le tessere
+// let contenitore = document.getElementById("contenitore-tessera");
 
-// Mappatura dei nomi dei campi della tessera
-let campiMapping = {
-  "nome": "Nome:",
-  "cognome": "Cognome:",
-  "nTessera": "Numero Tessera:"
-};
+// // Mappatura dei nomi dei campi della tessera
+// let campiMapping = {
+//   "nome": "Nome:",
+//   "cognome": "Cognome:",
+//   "nTessera": "Numero Tessera:"
+// };
 
-// Funzione per fare una richiesta AJAX
-function makeRequest(url, method, data, callback) {
-  let xhr = new XMLHttpRequest();
-  xhr.open(method, url, true);
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      if (xhr.status === 200) {
-        callback(xhr.responseText);
-      } else {
-        console.error('Si è verificato un errore durante la richiesta.');
-      }
-    }
-  };
-  xhr.send(data);
-}
+// // Funzione per fare una richiesta AJAX
+// function makeRequest(url, method, data, callback) {
+//   let xhr = new XMLHttpRequest();
+//   xhr.open(method, url, true);
+//   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+//   xhr.onreadystatechange = function () {
+//     if (xhr.readyState === XMLHttpRequest.DONE) {
+//       if (xhr.status === 200) {
+//         callback(xhr.responseText);
+//       } else {
+//         console.error('Si è verificato un errore durante la richiesta.');
+//       }
+//     }
+//   };
+//   xhr.send(data);
+// }
 
-// Fai una richiesta al server PHP per ottenere i dati dalla tabella del database
-makeRequest('../php/get_data.php', 'GET', null, function (response) {
-  let data = JSON.parse(response);
+// // Fai una richiesta al server PHP per ottenere i dati dalla tabella del database
+// makeRequest('../php/get_data.php', 'GET', null, function (response) {
+//   let data = JSON.parse(response);
 
-  // Itera sui dati e crea tessere per ciascun record
-  data.forEach(function (record) {
-    // Crea un nuovo elemento div per la tessera
-    let tesseraDiv = document.createElement("div");
-    tesseraDiv.classList.add("card-container");
+//   // Itera sui dati e crea tessere per ciascun record
+//   data.forEach(function (record) {
+//     // Crea un nuovo elemento div per la tessera
+//     let tesseraDiv = document.createElement("div");
+//     tesseraDiv.classList.add("card-container");
 
-    // Crea un nuovo elemento div per la tessera interna
-    let cardDiv = document.createElement("div");
-    cardDiv.classList.add("card");
+//     // Crea un nuovo elemento div per la tessera interna
+//     let cardDiv = document.createElement("div");
+//     cardDiv.classList.add("card");
 
-    // Crea un nuovo elemento div per il container delle informazioni
-    let containerInfoDiv = document.createElement("div");
-    containerInfoDiv.classList.add("containerInfo");
+//     // Crea un nuovo elemento div per il container delle informazioni
+//     let containerInfoDiv = document.createElement("div");
+//     containerInfoDiv.classList.add("containerInfo");
 
-    // Aggiungi l'icona
-    let icon = document.createElement("i");
-    icon.classList.add("fa-solid", "fa-wifi", "wifiIcon");
+//     // Aggiungi l'icona
+//     let icon = document.createElement("i");
+//     icon.classList.add("fa-solid", "fa-wifi", "wifiIcon");
 
-    // Aggiungi gli elementi per i campi della tessera
-    let nameSurname = document.createElement("h2");
-    nameSurname.textContent = record.nome + " " + record.cognome;
-    containerInfoDiv.appendChild(nameSurname);
+//     // Aggiungi gli elementi per i campi della tessera
+//     let nameSurname = document.createElement("h2");
+//     nameSurname.textContent = record.nome + " " + record.cognome;
+//     containerInfoDiv.appendChild(nameSurname);
 
-    let campoTessera = document.createElement("h2");
-    campoTessera.textContent = "N°tessera";
-    containerInfoDiv.appendChild(campoTessera);
+//     let campoTessera = document.createElement("h2");
+//     campoTessera.textContent = "N°tessera";
+//     containerInfoDiv.appendChild(campoTessera);
 
-    let tesseraNum = document.createElement("h2");
-    tesseraNum.textContent = record.nTessera;
-    containerInfoDiv.appendChild(tesseraNum);
+//     let tesseraNum = document.createElement("h2");
+//     tesseraNum.textContent = record.nTessera;
+//     containerInfoDiv.appendChild(tesseraNum);
 
-    // Aggiungi l'icona al container delle informazioni
-    containerInfoDiv.appendChild(icon);
+//     // Aggiungi l'icona al container delle informazioni
+//     containerInfoDiv.appendChild(icon);
 
-    // Aggiungi il container delle informazioni alla tessera
-    cardDiv.appendChild(containerInfoDiv);
+//     // Aggiungi il container delle informazioni alla tessera
+//     cardDiv.appendChild(containerInfoDiv);
 
-    // Aggiungi la tessera al contenitore
-    tesseraDiv.appendChild(cardDiv);
-    contenitore.appendChild(tesseraDiv);
-  });
-});
+//     // Aggiungi la tessera al contenitore
+//     tesseraDiv.appendChild(cardDiv);
+//     contenitore.appendChild(tesseraDiv);
+//   });
+// });

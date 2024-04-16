@@ -1,58 +1,58 @@
-let casso1 = L.marker([45.43, 10.98], { icon: plasticaIcon }).addTo(map);
-let casso2 = L.marker([45.43, 11], { icon: cartaIcon }).addTo(map);
-let casso3 = L.marker([45.43, 10.99], { icon: vetroIcon }).addTo(map);
-let casso4 = L.marker([45.434, 10.99], { icon: lattineIcon }).addTo(map);
+$(document).ready(function () {
+    // Array di icone
+    var icons = [
+        new CassonettiIcons({ iconUrl: 'https://i.ibb.co/WH8wxT9/cass-blu.png' }),
+        new CassonettiIcons({ iconUrl: 'https://i.ibb.co/yX81gQN/cass-giallo.png' }),
+        new CassonettiIcons({ iconUrl: 'https://i.ibb.co/Kj9tRvv/cass-rosso.png' }),
+        new CassonettiIcons({ iconUrl: 'https://i.ibb.co/4Wz9Tyw/Cass-nero.png' })
+    ];
 
-let cassoPlastica = "Cassonetto plastica";
-let cassoCarta = "Cassonetto carta";
-let cassoVetro = "Cassonetto vetro";
-let cassoLattine = "Cassonetto lattine";
+    var cardContainer = $('#contenitore-tessereCasonetto');
+    var markerCards = {}; // Oggetto per associare marker alle rispettive tessere
 
-const cards = document.getElementById("contenitore-tessereCasonetto");
+    $.ajax({
+        url: '../php/get_markers.php', // Inserisci il percorso al tuo file PHP
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            data.forEach(function (marker) {
+                var lat = marker.latitudine;
+                var lng = marker.longitudine;
+                var id = marker.idMarker;
 
-const tesseraUtente = document.getElementById("contenitore-tessera");
+                // Seleziona casualmente un'icona dall'array di icone
+                var randomIcon = icons[Math.floor(Math.random() * icons.length)];
 
-casso1.bindPopup(`<h2>${cassoPlastica}</h2>`);
-casso2.bindPopup(`<h2>${cassoCarta}</h2>`);
-casso3.bindPopup(`<h2>${cassoVetro}</h2>`);
-casso4.bindPopup(`<h2>${cassoLattine}</h2>`);
+                // Aggiungi il marker con l'icona casuale alla mappa
+                var markerObj = L.marker([lat, lng], { icon: randomIcon }).addTo(map);
 
-function onMarkerClick(containerId) {
-    const clickedCard = document.getElementById(containerId);
+                // Creazione della card
+                var card = $('<div class="card">');
+                var containerInfo = $('<div class="containerInfo">');
+                var title = $('<h3>').text('Titolo casuale');
+                var status = $('<p>').text('Stato casuale');
+                var distance = $('<p>').text('Distanza casuale');
 
-    // Nascondi tutte le tessere tranne quella cliccata
-    const allCards = document.querySelectorAll('.card-container2');
-    allCards.forEach(card => {
-        if (card.id !== containerId) {
-            card.style.display = 'none';
+                containerInfo.append(title, status, distance);
+                card.append(containerInfo);
+
+                // Associa il marker alla sua card
+                markerCards[id] = card;
+
+                // Aggiungi la card al contenitore, inizialmente nascosta
+                cardContainer.append(card.hide());
+
+                // Aggiungi un evento di clic al marker per mostrare la tessera corrispondente
+                markerObj.on('click', function () {
+                    // Nascondi tutte le altre tessere
+                    $('.card').hide();
+                    // Mostra la tessera corrispondente al marker cliccato
+                    card.show();
+                });
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error('Errore durante il recupero dei dati:', error);
         }
     });
-
-    // Mostra la tessera cliccata
-    if (clickedCard.style.display === "none" || clickedCard.style.display === "") {
-        cards.style.display = "flex";
-        clickedCard.style.transition = "all 0.3s ease-in-out";
-        clickedCard.style.display = "flex";
-        cards.style.bottom = "0px";
-        clickedCard.style.transition = "transform 0.3s ease-in-out";
-        clickedCard.style.transform = "translateY(100%)";
-        tessere.style.display = "none";
-        setTimeout(() => {
-            clickedCard.style.transform = "translateY(0)";
-        }, 10);
-        cartaicon.style.bottom = `${(altezzaDispositivo / 10) * 2.4}px`;
-    } else {
-        clickedCard.style.transform = "translateY(100%)";
-        setTimeout(() => {
-            clickedCard.style.display = "none";
-        }, 300);
-        cartaicon.style.bottom = "25px";
-        cards.style.display = "none";
-    }
-}
-
-casso1.on('click', () => onMarkerClick('card-container-0'));
-casso2.on('click', () => onMarkerClick('card-container-1'));
-casso3.on('click', () => onMarkerClick('card-container-2'));
-casso4.on('click', () => onMarkerClick('card-container-3'));
-
+});
