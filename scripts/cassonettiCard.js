@@ -1,8 +1,8 @@
 map.locate({ setView: true, maxZoom: 16 });
-let distance;
 
 function onLocationError(e) {
-    alert(e.message);
+    // Alert personalizzato per mostrare che la posizione non può essere trovata
+    alert("Impossibile trovare la tua posizione attuale. Assicurati che il GPS sia attivo e che il tuo browser consenta l'accesso alla posizione.");
 }
 
 map.on('locationfound', onLocationFound);
@@ -42,7 +42,7 @@ function createCard(containerId, title, state, distance) {
     stateElement.textContent = `Stato: ${state}`;
 
     const distanceElement = document.createElement('p');
-    distanceElement.textContent = `Distanza: ${distance} metri`;
+    distanceElement.textContent = `Distanza: ${distance !== undefined ? distance + ' metri' : 'Non disponibile'}`;
 
     const segnala = document.createElement('a');
     segnala.textContent = 'SEGNALA';
@@ -61,7 +61,7 @@ function onLocationFound(e) {
     let radius = e.accuracy;
 
     L.marker(e.latlng).addTo(map)
-        .bindPopup("Ti trovi entro " + radius + " metri da questo punto", {className: 'custom-popup'}).openPopup();
+        .bindPopup("Ti trovi entro " + radius + " metri da questo punto", { className: 'custom-popup' }).openPopup();
 
     L.circle(e.latlng, radius).addTo(map);
 
@@ -70,10 +70,10 @@ function onLocationFound(e) {
     let latLng3 = casso3.getLatLng();
     let latLng4 = casso4.getLatLng();
 
-    let distance1 = calculateDistance(e.latlng, latLng1);
-    let distance2 = calculateDistance(e.latlng, latLng2);
-    let distance3 = calculateDistance(e.latlng, latLng3);
-    let distance4 = calculateDistance(e.latlng, latLng4);
+    let distance1 = e.latlng ? calculateDistance(e.latlng, latLng1) : undefined;
+    let distance2 = e.latlng ? calculateDistance(e.latlng, latLng2) : undefined;
+    let distance3 = e.latlng ? calculateDistance(e.latlng, latLng3) : undefined;
+    let distance4 = e.latlng ? calculateDistance(e.latlng, latLng4) : undefined;
 
     createCard('contenitore-tessereCasonetto', cassoPlastica, generateRandomState(), distance1);
     createCard('contenitore-tessereCasonetto', cassoCarta, generateRandomState(), distance2);

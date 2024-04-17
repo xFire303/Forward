@@ -60,4 +60,3 @@ casso1.on('click', () => onMarkerClick('card-container-0'));
 casso2.on('click', () => onMarkerClick('card-container-1'));
 casso3.on('click', () => onMarkerClick('card-container-2'));
 casso4.on('click', () => onMarkerClick('card-container-3'));
-
