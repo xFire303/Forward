@@ -11,10 +11,10 @@ function showTessera() {
         tessere.style.bottom = "0px";
         tessere.style.transform = "translateY(100%)";
         if (`${larghezzaDispositivo}px` > 768){
-            cartaicon.style.bottom = `300px`;
+            cartaicon.style.bottom = `240px`;
         }
         else {
-            cartaicon.style.bottom = `300px`;
+            cartaicon.style.bottom = `240px`;
         }
         cards.style.display = "none";
         setTimeout(() => {
