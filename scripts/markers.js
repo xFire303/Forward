@@ -40,11 +40,11 @@ function onMarkerClick(containerId) {
         setTimeout(() => {
             clickedCard.style.transform = "translateY(0)";
         }, 10);
-        if (`${altezzaDispositivo}px` > 768){
-            cartaicon.style.bottom = `${(altezzaDispositivo / 10) * 2.3}px`;
+        if (`${larghezzaDispositivo}px` > 768){
+            cartaicon.style.bottom = `${(larghezzaDispositivo / 10) * 10}px`;
         }
         else {
-            cartaicon.style.bottom = `${(altezzaDispositivo / 10) * 3.3}px`;
+            cartaicon.style.bottom = `${(larghezzaDispositivo / 10) * 10}px`;
         }
     } else {
         clickedCard.style.transform = "translateY(100%)";

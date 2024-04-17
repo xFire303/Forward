@@ -10,11 +10,11 @@ function showTessera() {
         tessere.style.transition = "transform 0.3s ease-in-out";
         tessere.style.bottom = "0px";
         tessere.style.transform = "translateY(100%)";
-        if (`${altezzaDispositivo}px` > 768){
-            cartaicon.style.bottom = `${(altezzaDispositivo / 10) * 2.3}px`;
+        if (`${larghezzaDispositivo}px` > 768){
+            cartaicon.style.bottom = `${(larghezzaDispositivo / 10) * 0.2}px !important`;
         }
         else {
-            cartaicon.style.bottom = `${(altezzaDispositivo / 10) * 3.7}px`;
+            cartaicon.style.bottom = `${(larghezzaDispositivo / 10) * 10}px !important`;
         }
         cards.style.display = "none";
         setTimeout(() => {

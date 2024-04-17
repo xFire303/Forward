@@ -3,8 +3,6 @@
 <!-- componente navbar -->
 <?php include_once("../components/navbar.php") ?>
 
-
-
 <section class="dashboard">
         <div class="containerUser">
 
@@ -44,5 +42,6 @@
             </div>
         </div>
     </section>
+
 <!-- componente footer -->
 <?php include_once("../components/footer.php") ?>
