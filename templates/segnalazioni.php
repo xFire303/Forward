@@ -1,8 +1,16 @@
 <?php
+require_once("../php/session.php");
+
 $successSegnalazione = '';
+
 if (isset($_POST['invia_email'])) {
-    exec('python ../python/app.py');
-    $successSegnalazione = "Email inviata con successo!";
+    if (!isset($_SESSION['email_inviata'])) { // Verifica se l'email è già stata inviata
+        exec('python ../python/app.py');
+        $successSegnalazione = "Email inviata con successo!";
+        $_SESSION['email_inviata'] = true; // Imposta la variabile di sessione
+    } else {
+        $successSegnalazione = "L'email è già stata inviata.";
+    }
 }
 ?>
 
