@@ -1,5 +1,5 @@
-let casso1 = L.marker([45.43, 10.98], { icon: plasticaIcon }).addTo(map);
-let casso2 = L.marker([45.43, 11], { icon: cartaIcon }).addTo(map);
+let casso1 = L.marker([45.434082, 11.003025], { icon: plasticaIcon }).addTo(map);
+let casso2 = L.marker([45.439171, 11.019551], { icon: cartaIcon }).addTo(map);
 let casso3 = L.marker([45.43, 10.99], { icon: vetroIcon }).addTo(map);
 let casso4 = L.marker([45.434, 10.99], { icon: lattineIcon }).addTo(map);
 
@@ -40,7 +40,12 @@ function onMarkerClick(containerId) {
         setTimeout(() => {
             clickedCard.style.transform = "translateY(0)";
         }, 10);
-        cartaicon.style.bottom = `${(altezzaDispositivo / 10) * 2.4}px`;
+        if (`${larghezzaDispositivo}px` > 768){
+            cartaicon.style.bottom = `${(larghezzaDispositivo / 10) * 1}px`;
+        }
+        else {
+            cartaicon.style.bottom = `${(larghezzaDispositivo / 10) * 1.7}px`;
+        }
     } else {
         clickedCard.style.transform = "translateY(100%)";
         setTimeout(() => {
