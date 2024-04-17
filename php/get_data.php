@@ -1,24 +1,12 @@
 <?php
 // Avvia la sessione per accedere alla variabile $_SESSION
 session_start();
+include_once("../connection/dbConnection.php");
 
 // Verifica se l'utente è loggato
 if (!isset($_SESSION["email"])) {
     // Utente non loggato, restituisci un messaggio di errore o reindirizza
     die("Utente non autorizzato");
-}
-
-// Connessione al database MySQL
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "forward";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verifica connessione
-if ($conn->connect_error) {
-    die("Connessione fallita: " . $conn->connect_error);
 }
 
 // Ottieni l'email dell'utente dalla sessione

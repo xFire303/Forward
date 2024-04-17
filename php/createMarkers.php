@@ -1,16 +1,6 @@
 <?php
-// Connessione al database
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "forward";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verifica della connessione
-if ($conn->connect_error) {
-    die("Connessione fallita: " . $conn->connect_error);
-}
+include_once("../connection/dbConnection.php");
 
 // Query per ottenere i marker dal database
 $sql = "SELECT latitudine, longitudine FROM markers";
