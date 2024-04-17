@@ -52,8 +52,10 @@ if (isset($_POST['invia_email'])) {
 
     <h1>Invio Email</h1>
     <form action="" method="post">
+        <textarea name="testo_email" placeholder="Inserisci il messaggio da inviare"></textarea>
         <button type="submit" name="invia_email">Invia Email</button>
     </form>
+
 
     <script src="../js/index.js"></script>
 

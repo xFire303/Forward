@@ -9,7 +9,6 @@
     </div>
     <i class="fa fa-qrcode" style="font-size: 300px; color: white;"></i>
 </div>
-<a href="#scanner-section" class="scroll-down-arrow"><i class="fa fa-chevron-down"></i></a>
 </section>
 
 
