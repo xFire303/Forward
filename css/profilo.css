@@ -3,21 +3,21 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: green;
+    background-color: #fff9e6;
 }
 
 .containerUser{
     padding: 20px;
     height: auto;
     width: 95%;
-    background-color:whitesmoke;
+    background-color:#3a5a40;
     border-radius: 2rem;
 }
 
 .container_data{
     display: grid;
     grid-template-columns: 1fr 1fr ;
-    background-color: black;
+    background-color: #fff9e6;
     padding: 20px;
     border-radius: 2rem;
     margin-bottom: 14%;
@@ -29,11 +29,11 @@
     height: 90px;
     width: 90px;
     border-radius: 50%;
-    border: 2px solid whitesmoke;
+    border: 2px solid #3a5a40;
 }
 .avatar svg{
     height: 60px;
-    fill: whitesmoke;
+    fill: #3a5a40;
 }
 
 .dataUser{
@@ -42,7 +42,7 @@
     align-items: center;
     height: 90px;
     width: 100%;
-    color: white;
+    color: #3a5a40;
     font-size: 20px;
     gap: 10px;
 }
@@ -56,8 +56,8 @@
 }
 
 .emailData{
-    background-color: black;
-    color: whitesmoke;
+    background-color: #fff9e6;
+    color: #3a5a40;
     padding: 20px;
     border-radius: 2rem;
     height: auto;
@@ -65,8 +65,8 @@
 
 
 .N_tessera{
-    background-color: black;
-    color: whitesmoke;
+    background-color: #fff9e6;
+    color: #3a5a40;
     padding: 20px;
     border-radius: 2rem;
     text-transform: uppercase;
@@ -78,11 +78,15 @@
     margin-top: 10%;
     display: flex;
     justify-content: end;
+    color: #fff9e6;
+}
+.change_password a{
+    color: #fff9e6;
 }
 
 .city_Data{
-    background-color: black;
-    color: whitesmoke;
+    background-color: #fff9e6;
+    color: #3a5a40;
     padding: 20px;
     border-radius: 2rem;
     text-transform: uppercase;
