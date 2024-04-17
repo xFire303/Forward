@@ -2,8 +2,6 @@
 <?php include_once("../components/navbar.php") ?>
 
 <section class="scannerContainer">
-
-<h2 class="titolo">SCANNER PRODOTTI</h2>
 <section class="hero">
     <div class="center"></div>
     <div class="rettangolo">

@@ -1,3 +1,11 @@
+<?php
+$successSegnalazione = '';
+if (isset($_POST['invia_email'])) {
+    exec('python ../python/app.py');
+    $successSegnalazione = "Email inviata con successo!";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 
@@ -35,11 +43,18 @@
     </nav>
 
     <h1>Invio Email</h1>
-    <form action="/send_email" method="post">
-        <button type="submit">Invia Email</button>
+    <form action="" method="post">
+        <button type="submit" name="invia_email">Invia Email</button>
     </form>
-    
+
     <script src="../js/index.js"></script>
+
+    <?php
+    if (!empty($successSegnalazione)) {
+        echo "<p>$successSegnalazione</p>";
+    }
+    ?>
+
 </body>
 
 </html>
