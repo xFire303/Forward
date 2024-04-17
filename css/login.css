@@ -6,7 +6,7 @@
     align-items: center;
     min-height: 100vh;
     font-family: plus jakarta sans;
-    background: #7A927E;
+    background: #31982e;
     color: #0c0c0f;
 
 
@@ -15,7 +15,7 @@
 .main {
     width: 350px;
     height: 500px;
-    background: radial-gradient(to bottom right, #637e56, #8a9085);
+    background: #fdfff0;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 5px 20px 50px #000;
@@ -43,13 +43,14 @@ label {
 }
 
 #accesso{
+    padding-top: 30px;
     margin: 60px;
 }
 
 input {
     width: 60%;
-    height: 30px;
-    background: #e0dede;
+    height: 20px;
+    background: #d1fccf;
     justify-content: center;
     display: flex;
     margin: 20px auto;
@@ -57,7 +58,7 @@ input {
     border: none;
     outline: none;
     border-radius: 5px;
-    color: #0c0c0f;
+    color: black;
 }
 
 button {
@@ -66,8 +67,8 @@ button {
     margin: 10px auto;
     justify-content: center;
     display: block;
-    color: #0c0c0f;
-    background: #637E56;
+    color: white;
+    background: #4bd247;
     font-size: 1em;
     font-weight: 700;
     margin-top: 20px;
@@ -78,19 +79,24 @@ button {
 }
 
 button:hover {
-    background: #516945;
+    background: #4bd247;
+    color: white;
 }
 
 .login {
     height: 460px;
-    background: #637E56;
+    background: #d1fccf;
     border-radius: 60% / 10%;
     transform: translateY(-180px);
     transition: .6s ease-in-out;
 }
+.login input{
+    background-color: white;
+}
 
 .btnAccesso {
-    background-color: #7A927E;
+    background-color: white;
+    color: #4bd247;
 }
 
 .login label {
@@ -121,4 +127,8 @@ button:hover {
     display: flex;
     justify-content: center;
     font-weight: 900;
+}
+
+input::placeholder{
+    color: black;
 }
