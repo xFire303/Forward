@@ -1,9 +1,8 @@
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import sys
 
-def invia_email(testo):
+def invia_email():
     # Parametri del server SMTP
     smtp_server = 'smtp.gmail.com'
     port = 587
@@ -22,6 +21,7 @@ def invia_email(testo):
 
     # Composizione del messaggio
     oggetto = 'Segnalazione'
+    testo = 'Ho questo problema.....'
 
     for nome, email_destinatario in destinatari.items():
         msg = MIMEMultipart()
@@ -30,7 +30,7 @@ def invia_email(testo):
         msg['Subject'] = oggetto
 
         # Corpo dell'email
-        corpo_email = testo
+        corpo_email = f'{testo}'
         msg.attach(MIMEText(corpo_email, 'plain'))
 
         # Invio dell'email
@@ -40,10 +40,5 @@ def invia_email(testo):
     # Chiusura della connessione
     server.quit()
 
-# Se il modulo viene eseguito direttamente
-if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        testo = sys.argv[1]
-        invia_email(testo)
-    else:
-        print("Errore: specificare il testo dell'email da inviare.")
+# Chiamata alla funzione per inviare l'email
+invia_email()
