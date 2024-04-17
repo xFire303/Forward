@@ -17,23 +17,27 @@
             </div>
         </div>
 
+         <div class="city_Data">
+            <h3>Città</h3>
+            <p>Verona</p>
+         </div>
+
         <!-- container email e Ntessera -->
         <div class="container_data2">
-
+          
             <div class="emailData">
                 <h3 id="userEmail"></h3>
             </div>
 
+
+            <div class="container_data3">
+                <div class="emailData">
+                    <h3>Email</h3>
+                </div>
+               
             <div class="N_tessera">
                 <h3>N° tessera</h3>
                 <p id="userNtessera"></p>
-            </div>
-        </div>
-
-        <div class="container_data3">
-            <div class="city_Data">
-                <h3>Città</h3>
-                <p id="userCity">Verona</p>
             </div>
         </div>
 

@@ -34,12 +34,16 @@
 
 label {
     color: #0c0c0f;
-    font-size: 1.8em;
+    font-size: 2em;
     justify-content: center;
     display: flex;
-    margin: 60px;
+    margin: 30px;
     cursor: pointer;
     transition: .5s ease-in-out;
+}
+
+#accesso{
+    margin: 60px;
 }
 
 input {

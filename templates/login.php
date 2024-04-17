@@ -61,7 +61,7 @@ if (isset($_GET['success'])) {
         </div>
         <div class="login">
             <form action='login.php' method='post'>
-                <label for="chk" aria-hidden="true">ACCESSO</label>
+                <label for="chk" aria-hidden="true" id="accesso">ACCESSO</label>
                 <input type="email" name="email" placeholder="Email" required="">
                 <input type="password" name="password" placeholder="Password" required="">
                 <div class="errors">

@@ -14,7 +14,7 @@ nav{
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    row-gap: 2.5rem;
+    row-gap: 2rem;
     list-style-type: none;
 }
 
