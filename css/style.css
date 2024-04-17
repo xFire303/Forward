@@ -145,7 +145,7 @@ body {
     }
 
     .card {
-        line-height: 5px;
+        line-height: 25px;
         width: 80%;
     }
 }
