@@ -30,6 +30,7 @@ function onMarkerClick(containerId) {
 
     // Mostra la tessera cliccata
     if (clickedCard.style.display === "none" || clickedCard.style.display === "") {
+        tesseraUtente.style.display = 'none';
         cards.style.display = "flex";
         clickedCard.style.transition = "all 0.3s ease-in-out";
         clickedCard.style.display = "flex";
@@ -41,15 +42,16 @@ function onMarkerClick(containerId) {
             clickedCard.style.transform = "translateY(0)";
         }, 10);
         if (`${larghezzaDispositivo}px` > 768){
-            cartaicon.style.bottom = `${(larghezzaDispositivo / 10) * 1}px`;
+            cartaicon.style.bottom = `240px`;
         }
         else {
-            cartaicon.style.bottom = `${(larghezzaDispositivo / 10) * 1.7}px`;
+            cartaicon.style.bottom = `240px`;
         }
     } else {
         clickedCard.style.transform = "translateY(100%)";
         setTimeout(() => {
             clickedCard.style.display = "none";
+            tesseraUtente.style.display = 'none';
         }, 300);
         cartaicon.style.bottom = "25px";
         cards.style.display = "none";
