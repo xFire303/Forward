@@ -47,8 +47,9 @@ makeRequest('../php/get_data.php', 'GET', null, function (response) {
     containerDataTessera.classList.add("containerDataTessera");
 
     // Aggiungi l'icona
-    let icon = document.createElement("i");
-    icon.classList.add("fa-solid", "fa-wifi", "wifiIcon");
+    let img = document.createElement("img");
+    img.classList.add("imgCard");
+    img.src="../img/icons8-nfc-90.png"
 
     // Aggiungi gli elementi per i campi della tessera
     let nameSurname = document.createElement("h2");
@@ -65,7 +66,7 @@ makeRequest('../php/get_data.php', 'GET', null, function (response) {
 
     // Aggiungi l'icona al container delle informazioni
     containerInfoDiv.appendChild(containerDataTessera);
-    containerInfoDiv.appendChild(icon);
+    containerInfoDiv.appendChild(img);
 
     // Aggiungi il container delle informazioni alla tessera
     cardDiv.appendChild(containerInfoDiv);
