@@ -26,11 +26,9 @@
 
         <!-- container email e Ntessera -->
         <div class="container_data2">
-            <div class="container_data3">
-                <div class="emailData">
-                    <h3>Email</h3>
-                    <h3 id="userEmail"></h3>
-                </div>
+            <div class="emailData">
+                <h3>Email</h3>
+                <h3 id="userEmail"></h3>
             </div>
 
             <div class="N_tessera">

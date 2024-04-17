@@ -48,10 +48,9 @@
 
 
 .container_data2{
-    display: grid;
-    grid-template-columns: 1fr 1fr ;
-    padding: 20px;
-    column-gap: 3%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
     text-transform: uppercase;
 }
 
@@ -71,16 +70,7 @@
     text-transform: uppercase;
 }
 
-.container_data3{
-    display: flex;
-    justify-content: center;
-    width: 80%;
-    padding: 20px;
-    margin: auto auto;
-    color: whitesmoke;
-    background-color: black;
-    border-radius: 2rem;
-}
+
 
 .change_password{
     margin-top: 10%;
@@ -94,4 +84,5 @@
     padding: 20px;
     border-radius: 2rem;
     text-transform: uppercase;
+    margin-bottom: 20px;
 }
