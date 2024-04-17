@@ -19,7 +19,7 @@
                 <a href="../templates/profilo.php" class="link"><li>Profilo personale</li></a>
                 <a href="../templates/scanner.php" class="link"><li>Scansiona rifiuto</li></a>
                 <a href="../pages/informazioni.html" class="link"><li>Informazioni</li></a>
-                <a href="segnalazioni.html" class="link"><li>Segnalazioni</li></a>
+                <a href="segnalazioni.php" class="link"><li>Segnalazioni</li></a>
                 <a class="link" id="btnLightMap"><li>Light Map</li></a>
                 <a class="link" id="btnDarkMap"><li>Dark Map</li></a>
                 <a href="../php/logout.php" class="link"><li>Logout</li></a>

@@ -1,35 +1,23 @@
-# app.py
-from flask import Flask, render_template, request, redirect, url_for
-import os
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-app = Flask(__name__)
-
-destinatari = {
-    'Marco Bosco'             : 'boscom303@gmail.com',
-    }
-
-@app.route('/')
-def index():
-    return render_template('index.php')
-
-@app.route('/segnalazioni')
-def altra_pagina():
-    return render_template('segnalazioni.html')
-
-@app.route('/send_email', methods=['POST'])
-def send_email():
+def invia_email():
     # Parametri del server SMTP
     smtp_server = 'smtp.gmail.com'
     port = 587
     mittente_email = 'boscom303@gmail.com'
+    password = "cqml migl teax evcd"
+
+    # Destinatari
+    destinatari = {
+        'Marco Bosco': 'boscom303@gmail.com',
+    }
 
     # Connessione al server SMTP
     server = smtplib.SMTP(smtp_server, port)
     server.starttls()
-    server.login(mittente_email, "cqml migl teax evcd")
+    server.login(mittente_email, password)
 
     # Composizione del messaggio
     oggetto = 'Segnalazione'
@@ -51,8 +39,6 @@ def send_email():
 
     # Chiusura della connessione
     server.quit()
-    return redirect(url_for('segnalazioni'))  # Reindirizza alla funzione index
-    
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# Chiamata alla funzione per inviare l'email
+invia_email()
