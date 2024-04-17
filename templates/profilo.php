@@ -22,8 +22,9 @@
             <!-- container email e Ntessera -->
             <div class="container_data2">
 
-                <div class="emailData">
-                    <h3>Email</h3>
+                 <div class="city_Data">
+                    <h3>Città</h3>
+                    <p>Verona</p>
                 </div>
 
                 <div class="N_tessera">
@@ -33,10 +34,10 @@
             </div>
 
             <div class="container_data3">
-                <div class="city_Data">
-                    <h3>Città</h3>
-                    <p>Verona</p>
+                <div class="emailData">
+                    <h3>Email</h3>
                 </div>
+               
             </div>
 
             <div class="change_password">

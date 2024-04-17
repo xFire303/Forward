@@ -2,7 +2,14 @@
 @import url(login.css);
 @import url(scanner.css);
 @import url(profilo.css);
+@font-face {
+    font-family: tt;
+    src: url(/font/static/JosefinSans-Regular.ttf);
+}
 
+*{
+    font-family: "tt";
+}
 body {
     margin: 0 auto;
 }
