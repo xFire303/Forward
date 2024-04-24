@@ -1,5 +1,4 @@
 <?php include_once("../components/head.php") ?>
-<?php include_once("../components/navbar.php") ?>
 
 <?php
 include_once("../connection/dbConnection.php");
@@ -49,7 +48,7 @@ if (isset($_GET['success'])) {
         <input type="checkbox" id="chk" aria-hidden="true">
         <div class="Registrazione">
             <form action="../php/register.php" method="post">
-                <label for="chk" aria-hidden="true"> REGISTRAZIONE </label>
+                <label for="chk" aria-hidden="true"> NUOVO UTENTE </label>
                 <input type="text" name="nome" placeholder="Nome" required="">
                 <input type="text" name="cognome" placeholder="Cognome" required="">
                 <input type="email" name="email" placeholder="Email" required="">
@@ -62,7 +61,7 @@ if (isset($_GET['success'])) {
         </div>
         <div class="login">
             <form action='login.php' method='post'>
-                <label for="chk" aria-hidden="true">ACCESSO</label>
+                <label for="chk" aria-hidden="true" id="accesso">ACCESSO</label>
                 <input type="email" name="email" placeholder="Email" required="">
                 <input type="password" name="password" placeholder="Password" required="">
                 <div class="errors">

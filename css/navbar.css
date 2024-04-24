@@ -14,12 +14,12 @@ nav{
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    row-gap: 2.5rem;
+    row-gap: 2rem;
     list-style-type: none;
 }
 
 .navLinks a{
-    color: black;
+    color: #3a5a40;
     text-decoration: none;
     padding: 5px 0px;
     text-transform: uppercase;
@@ -58,7 +58,7 @@ nav{
 
 .showMenu{
     height: 100vh;
-    padding-top: 10rem;
+    padding-top: 5rem;
 }
 
 #btnLightMap, #btnDarkMap {

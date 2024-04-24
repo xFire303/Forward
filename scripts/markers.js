@@ -1,5 +1,5 @@
-let casso1 = L.marker([45.43, 10.98], { icon: plasticaIcon }).addTo(map);
-let casso2 = L.marker([45.43, 11], { icon: cartaIcon }).addTo(map);
+let casso1 = L.marker([45.434082, 11.003025], { icon: plasticaIcon }).addTo(map);
+let casso2 = L.marker([45.439171, 11.019551], { icon: cartaIcon }).addTo(map);
 let casso3 = L.marker([45.43, 10.99], { icon: vetroIcon }).addTo(map);
 let casso4 = L.marker([45.434, 10.99], { icon: lattineIcon }).addTo(map);
 
@@ -30,6 +30,7 @@ function onMarkerClick(containerId) {
 
     // Mostra la tessera cliccata
     if (clickedCard.style.display === "none" || clickedCard.style.display === "") {
+        tesseraUtente.style.display = 'none';
         cards.style.display = "flex";
         clickedCard.style.transition = "all 0.3s ease-in-out";
         clickedCard.style.display = "flex";
@@ -40,11 +41,17 @@ function onMarkerClick(containerId) {
         setTimeout(() => {
             clickedCard.style.transform = "translateY(0)";
         }, 10);
-        cartaicon.style.bottom = `${(altezzaDispositivo / 10) * 2.4}px`;
+        if (`${larghezzaDispositivo}px` > 768){
+            cartaicon.style.bottom = `240px`;
+        }
+        else {
+            cartaicon.style.bottom = `240px`;
+        }
     } else {
         clickedCard.style.transform = "translateY(100%)";
         setTimeout(() => {
             clickedCard.style.display = "none";
+            tesseraUtente.style.display = 'none';
         }, 300);
         cartaicon.style.bottom = "25px";
         cards.style.display = "none";
@@ -55,4 +62,3 @@ casso1.on('click', () => onMarkerClick('card-container-0'));
 casso2.on('click', () => onMarkerClick('card-container-1'));
 casso3.on('click', () => onMarkerClick('card-container-2'));
 casso4.on('click', () => onMarkerClick('card-container-3'));
-

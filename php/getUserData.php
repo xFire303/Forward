@@ -13,7 +13,7 @@ if (!isset($_SESSION["email"])) {
 $email = $_SESSION["email"];
 
 // Esegui query per ottenere i dati della tessera dell'utente loggato
-$sql = "SELECT utenti.nome, utenti.cognome, nTessera FROM tessere INNER JOIN utenti ON tessere.idUtente = utenti.idUtente WHERE utenti.email = '$email'";
+$sql = "SELECT utenti.nome, utenti.cognome, utenti.email, nTessera FROM tessere INNER JOIN utenti ON tessere.idUtente = utenti.idUtente WHERE utenti.email = '$email'";
 $result = $conn->query($sql);
 
 $data = array();

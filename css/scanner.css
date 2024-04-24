@@ -21,7 +21,7 @@
 
 .hero {
     min-height: 100vh;
-    background: #ccd5ae;
+    background: #4bd247;
     background-attachment: fixed; /* Parallax effect */
     background-position: center;
     background-repeat: no-repeat;
@@ -50,8 +50,8 @@
 
 
 .rettangolo {
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     background: transparent;
     border: 5px solid #faedcd;
     position: absolute;

@@ -1,7 +1,16 @@
 @import url(navbar.css);
 @import url(login.css);
 @import url(scanner.css);
+@import url(profilo.css);
+@import url(informazioni.css);
+@font-face {
+    font-family: tt;
+    src: url(/font/static/JosefinSans-Regular.ttf);
+}
 
+*{
+    font-family: "tt";
+}
 body {
     margin: 0 auto;
 }
@@ -11,18 +20,20 @@ body {
 }
 
 #contenitore-tessera {
-    background-color: #409e4d;
+    background-color: #b0ebaf;
     display: none;
-    z-index: 1002;
+    z-index: 899;
     padding: 30px 0px 30px 0px;
     position: absolute;
     width: 100%;
-    border-radius: 10px;
+    height: 30%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 #contenitore-tessereCasonetto {
     background-color: #69966d;
-    z-index: 1002;
+    z-index: 899;
     padding: 30px 0px 30px 0px;
     position: absolute;
     width: 100%;
@@ -45,10 +56,12 @@ body {
     /* Centra gli elementi lungo l'asse principale (orizzontale) */
     width: 100%;
 }
-
-.containerInfo {
+.containerDataTessera{
     display: flex;
     flex-direction: column;
+}
+.containerInfo {
+    display: flex;
     align-items: flex-start;
     position: relative;
     font-size: 20px;
@@ -80,7 +93,7 @@ body {
     transition: 0.3s;
     width: 50%;
     border-radius: 10px;
-    background: linear-gradient(to right, #2f774c, #a6f582);
+    background-color: #5b985a;
     z-index: 1001;
     /* Assicura che la card sia sopra la mappa */
     padding: 25px 25px 25px 25px;
@@ -98,15 +111,72 @@ body {
 .wifiIcon {
     font-size: 3vh;
 }
+.imgCard{
+    height: 60px;
+}
 
 #cartaIcon {
     position: absolute;
     bottom: 25px;
     right: 10px;
-    z-index: 1002;
+    z-index: 900;
     font-size: 4vh;
     transition: bottom 0.3s ease-in-out;
     /* Aggiungi transizione per bottom */
+}
+
+
+.leaflet-bottom{
+    z-index: 800 !important;
+}
+
+.container-form-email {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    margin: auto auto;
+}
+
+.container-form-email h1 {
+    text-align: center;
+}
+
+.email-form {
+    background-color: #e5f2e5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    height: 50%;
+}
+
+.email-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: vertical;
+}
+
+.email-form button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.email-form button:hover {
+    background-color: #45a049;
 }
 
 @media only screen and (max-width: 700px) {
@@ -116,11 +186,11 @@ body {
 
     .containerInfo {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
         align-items: flex-start;
         position: relative;
         font-size: 20px;
-        line-height: 1px;
+        line-height: 30px;
         color: white;
     }
 
@@ -137,6 +207,7 @@ body {
     }
 
     .card {
-        line-height: 5px;
+        line-height: 25px;
+        width: 80%;
     }
 }

@@ -43,28 +43,34 @@ makeRequest('../php/get_data.php', 'GET', null, function (response) {
     let containerInfoDiv = document.createElement("div");
     containerInfoDiv.classList.add("containerInfo");
 
+    let containerDataTessera = document.createElement("div");
+    containerDataTessera.classList.add("containerDataTessera");
+
     // Aggiungi l'icona
-    let icon = document.createElement("i");
-    icon.classList.add("fa-solid", "fa-wifi", "wifiIcon");
+    let img = document.createElement("img");
+    img.classList.add("imgCard");
+    img.src="../img/icons8-nfc-90.png"
 
     // Aggiungi gli elementi per i campi della tessera
     let nameSurname = document.createElement("h2");
     nameSurname.textContent = record.nome + " " + record.cognome;
-    containerInfoDiv.appendChild(nameSurname);
+    containerDataTessera.appendChild(nameSurname);
 
     let campoTessera = document.createElement("h2");
     campoTessera.textContent = "N°tessera";
-    containerInfoDiv.appendChild(campoTessera);
+    containerDataTessera.appendChild(campoTessera);
 
     let tesseraNum = document.createElement("h2");
     tesseraNum.textContent = record.nTessera;
-    containerInfoDiv.appendChild(tesseraNum);
+    containerDataTessera.appendChild(tesseraNum);
 
     // Aggiungi l'icona al container delle informazioni
-    containerInfoDiv.appendChild(icon);
+    containerInfoDiv.appendChild(containerDataTessera);
+    containerInfoDiv.appendChild(img);
 
     // Aggiungi il container delle informazioni alla tessera
     cardDiv.appendChild(containerInfoDiv);
+    
 
     // Aggiungi la tessera al contenitore
     tesseraDiv.appendChild(cardDiv);

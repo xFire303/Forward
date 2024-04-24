@@ -1,0 +1,94 @@
+.dashboard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #fff9e6;
+}
+
+.containerUser{
+    padding: 20px;
+    height: auto;
+    width: 95%;
+    background-color:#3a5a40;
+    border-radius: 2rem;
+}
+
+.container_data{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    background-color: #fff9e6;
+    padding: 20px;
+    border-radius: 2rem;
+    margin-bottom: 14%;
+}
+.avatar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    border: 2px solid #3a5a40;
+}
+.avatar svg{
+    height: 60px;
+    fill: #3a5a40;
+}
+
+.dataUser{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 90px;
+    width: 100%;
+    color: #3a5a40;
+    font-size: 20px;
+    gap: 10px;
+}
+
+
+.container_data2{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    text-transform: uppercase;
+}
+
+.emailData{
+    background-color: #fff9e6;
+    color: #3a5a40;
+    padding: 20px;
+    border-radius: 2rem;
+    height: auto;
+}
+
+
+.N_tessera{
+    background-color: #fff9e6;
+    color: #3a5a40;
+    padding: 20px;
+    border-radius: 2rem;
+    text-transform: uppercase;
+}
+
+
+
+.change_password{
+    margin-top: 10%;
+    display: flex;
+    justify-content: end;
+    color: #fff9e6;
+}
+.change_password a{
+    color: #fff9e6;
+}
+
+.city_Data{
+    background-color: #fff9e6;
+    color: #3a5a40;
+    padding: 20px;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
